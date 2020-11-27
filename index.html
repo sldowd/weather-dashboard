@@ -12,18 +12,18 @@
         <h1 class="bg-secondary text-light">Weather Dashboard</h1>
     </header>
     <main class="d-flex">
-        <div class="col col-sm-3 min-100-vh .bg-light">
+        <div id="user-form" class="col col-sm-3 min-100-vh bg-light">
             <label>Search for a City:</label>
-            <input type="text" class="form-control" placeholder="City">
-            <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
+            <input type="text" class="form-control" placeholder="City" id="city">
+            <button type="submit" id="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
             <div id="recent-searches">
 
             </div>
         </div>
-        <div id="current-conditions" class="col col-sm-9 bg-info min-100-vw">
+        <div id="current-conditions" class="col col-sm-9 bg-info min-100-vw max-height">
             <h2>Current conditions</h2>
         </div>
-        <div id="five-day" class="col col-md-9 bg-warning">
+        <div id="five-day" class="col col-md-9 bg-warning max-height">
             <h2>Five day forecast</h2>
         </div>
     </main>

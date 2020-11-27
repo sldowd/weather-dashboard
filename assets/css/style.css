@@ -6,3 +6,6 @@
   .min-100-vw {
     min-width: 100vw;
   }
+  .max-height {
+    max-height: 50vh;
+  }
