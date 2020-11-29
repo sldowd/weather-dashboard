@@ -9,3 +9,6 @@
   .max-height {
     max-height: 50vh;
   }
+  .input {
+    max-width: 70%;
+  }
