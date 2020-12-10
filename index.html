@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <title>Weather Dashboard</title>
 </head>
-<body>
+<body class="container max-width">
     <header class="text-center">
         <h1 class="bg-secondary text-light">Weather Dashboard</h1>
     </header>
@@ -18,18 +18,18 @@
                 <input type="text" class="form-control" placeholder="City" id="city">
                 <button type="submit" id="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
             </form>
-            <div class="card" style="width: 18rem;">
-                <ul class="list-group-flush input" id="recent-searches">
+            <div class="card">
+                <ul class="list-group-flush" id="recent-searches">
 
                 </ul>
             </div>
         </div>
-        <div class="col col-sm-9 bg-info min-100-vw max-height">
+        <div class="col col-sm-9 max-width max-height">
             <h2><span id="search-city"></span><div id="icon"></div></h2>
             <div id="current-conditions">
             </div>
         </div>
-        <div id="five-day" class="col col-sm-9">
+        <div id="five-day" class="col col-sm-9 align-self-end max-width">
             <h4>5-Day Forecast</h4>
         </div>
     </main>

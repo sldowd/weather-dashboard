@@ -12,3 +12,6 @@
   .input {
     max-width: 70%;
   }
+.max-width {
+  max-width: 100%;
+}
