@@ -63,12 +63,12 @@ var displayCurrentWeather = function(data) {
     //fetch UV index
     fetch("http://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&cnt=1&appid=046dddbb0aa4d31febc4e77558997908")
     .then(function (response) {
-        response.json().then(function(data2) {
-            console.log(data2);
+        response.json().then(function(data) {
+            console.log("UVI", data);
         });
     });
     //create variables for data we want to display
-    var uvi = data2.value;
+    var uvi = data.value;
     var temp = data.main.temp;
     var humidity = data.main.humidity;
     var windSpeed = data.wind.speed;
@@ -91,7 +91,7 @@ var getForecast = function(city) {
         //request was successful
         if (response.ok) {
             response.json().then(function(data) {
-                console.log(data);
+                console.log("5day", data);
                 displayForecast(data, city);
             });
         } else {
@@ -102,7 +102,27 @@ var getForecast = function(city) {
 //display forecast data
 var displayForecast = function(data) {
     for (var i = 0; i < data.list.length; i++) {
-
+        let dayCard = document.createElement("div");
+        dayCard.className = "card";
+        var date = moment().add(parseInt([i]), 'day').format('MM/DD/YYYY');
+        console.log(date);
+        $(dayCard).html(date);
+        // var iconcode = data.list[i].weather[0].icon;
+        // console.log(iconcode);
+        // var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
+        // var iconDisp = document.createElement("img");
+        // iconDisp.setAttribute('src', iconurl);
+        // var iconSpan = document.createElement("span");
+        // iconSpan.appendChild(iconDisp);
+        var temp = data.list[i].main.temp;
+        var humidity = data.list[i].main.humidity;
+        console.log(temp, humidity);
+        dayCard.innerHTML = `
+        <h3>${date}</h3>
+        <p>Temperature: ${temp}°F<p>
+        <p>Humidity: ${humidity}%<p>`;
+        $('#five-day').append(dayCard);
+        
     }
 }
 //load recently searched cities
@@ -110,7 +130,10 @@ var recentSearch = function() {
     //create span, insert city from local storage
     var searchedCity = document.createElement("li");
     searchedCity.className = "list-group-item";
-    searchedCity.textContent = localStorage.getItem("cityname");
+    let retrievedCity = localStorage.getItem("cityname");
+    console.log(JSON.parse(retrievedCity));
+    searchedCity.innerHTML = `<a>${JSON.parse(retrievedCity)}</a>`;
+    
     // append to container
     recentSearchEl.appendChild(searchedCity);
 
